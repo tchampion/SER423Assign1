@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Assign1</string>
+    <string name="name">Name:</string>
+    <string name="description">Description:</string>
+    <string name="category">Category:</string>
+    <string name="address_street">Address Street:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="latitude">Latitude:</string>
+    <string name="elevation">Elevation:</string>
+    <string name="address_title">Address Title:</string>
+</resources>
