@@ -21,11 +21,25 @@ package edu.asu.bsse.tchampio.assign1;
  */
 import org.json.JSONObject;
 
-public class PlaceDescription {
+import java.io.Serializable;
+
+public class PlaceDescription implements Serializable{
     private String name, description, category, addressTitle, addressStreet;
     private Double elevation, latitude, longitude;
 
-    PlaceDescription(String jsonStr){
+    public PlaceDescription(String name, String description, String category, String addressTitle, String addressStreet, Double elevation, Double latitude, Double longitude){
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.addressTitle = addressTitle;
+        this.addressStreet = addressStreet;
+        this.elevation = elevation;
+        this.latitude = latitude;
+        this.longitude = longitude;
+
+    }
+
+    public PlaceDescription(String jsonStr){
         try{
             JSONObject jo = new JSONObject(jsonStr);
             name = jo.getString("name");
@@ -63,6 +77,25 @@ public class PlaceDescription {
             android.util.Log.w(this.getClass().getSimpleName(),"error converting to json");
         }
         return ret;
+    }
+
+    public JSONObject toJson(){
+        JSONObject jo = new JSONObject();
+        try{
+            jo.put("name",name);
+            jo.put("description", description);
+            jo.put("category", category);
+            jo.put("address-title", addressTitle);
+            jo.put("address-street", addressStreet);
+            jo.put("elevation", elevation);
+            jo.put("latitude", latitude);
+            jo.put("longitude", longitude);
+
+        }
+        catch(Exception e){
+            android.util.Log.w(this.getClass().getSimpleName(),"error converting to json");
+        }
+        return jo;
     }
 
     public String getName() {
